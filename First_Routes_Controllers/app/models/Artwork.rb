@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Artwork < ApplicationRecord
-    validates :artist_id, presence: true, uniqueness: true
+    validates :artist_id, presence: true
     validates :title, presence: true, uniqueness: { scope: :artist_id, message: "Artist cannot have two arts with same title" }
 
     belongs_to :artist,

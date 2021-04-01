@@ -10,13 +10,18 @@
 # ApplicationRecord.connection.reset_pk_sequence!('artworks')
 # ApplicationRecord.connection.reset_pk_sequence!('artwork_shares')
 
-ActiveRecord::Base.transaction do
+# ActiveRecord::Base.transaction do
+
+    # ArtworkShare.destroy_all
+    Artwork.destroy_all
+    User.destroy_all
+
     user1 = User.create!(username: 'Joe')
     user2 = User.create!(username: 'Collin')
     user3 = User.create!(username: 'Billy')
     user4 = User.create!(username: 'David')
 
-
-    artwork1 = Artwork.create!(title: 'Da Vinci', img_url: 'google.com', artist_id: 1)
-    artwork2 = Artwork.create!(title: 'Leonardo', img_url: 'yahoo.com', artist_id: 2)
-end
+    artwork1 = Artwork.create!(title: 'Da Vinci', img_url: 'google.com', artist_id: user1.id)
+    artwork2 = Artwork.create!(title: 'Leonardo', img_url: 'yahoo.com', artist_id: user2.id)
+    artwork3 = Artwork.create!(title: 'ASDSAD', img_url: 'ya.com', artist_id: user2.id)
+# end
