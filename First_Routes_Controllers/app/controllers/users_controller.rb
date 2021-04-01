@@ -1,7 +1,19 @@
 class UsersController < ApplicationController
     def index
-        user = User.all
-        render json: user
+       
+       
+        if params[:id]
+            diplay = User.all
+        else
+            display = ""
+            all_users = User.all
+            all_users.each do |user|
+                if user.username.chars.map(&:downcase) == params[:q].chars.map(&:downcase)
+                   display = user.username
+                end
+            end
+        end
+        render json: display
     end
 
     def create
@@ -29,7 +41,6 @@ class UsersController < ApplicationController
 
     def destroy
         user = User.find(params[:id])
-
         user.delete
     end
 

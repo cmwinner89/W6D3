@@ -16,14 +16,20 @@ class User < ApplicationRecord
         class_name: :Artwork
 
     has_many :viewer_artworks,
-        # dependent: :destroy,
+        dependent: :destroy,
         foreign_key: :viewer_id,
         class_name: :ArtworkShare
+
+    has_many :comments,
+        foreign_key: :author_id,
+        class_name: :Comment,
+        dependent: :destroy
 
     has_many :shared_artworks,
         through: :viewer_artworks,
         source: :artwork
 
+        
     # def self.whatever(:id)
     #     do stuff
     # end
