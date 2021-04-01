@@ -12,7 +12,7 @@
 
 # ActiveRecord::Base.transaction do
 
-    # ArtworkShare.destroy_all
+    ArtworkShare.destroy_all
     Artwork.destroy_all
     User.destroy_all
 
@@ -24,4 +24,8 @@
     artwork1 = Artwork.create!(title: 'Da Vinci', img_url: 'google.com', artist_id: user1.id)
     artwork2 = Artwork.create!(title: 'Leonardo', img_url: 'yahoo.com', artist_id: user2.id)
     artwork3 = Artwork.create!(title: 'ASDSAD', img_url: 'ya.com', artist_id: user2.id)
+
+    shared_work1 = ArtworkShare.create!(viewer_id: user3.id, artwork_id: artwork1.id)
+    shared_work2 = ArtworkShare.create!(viewer_id: user4.id, artwork_id: artwork1.id)
+    shared_work3 = ArtworkShare.create!(viewer_id: user4.id, artwork_id: artwork2.id)
 # end
