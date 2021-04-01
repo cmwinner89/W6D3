@@ -13,8 +13,8 @@
 # ActiveRecord::Base.transaction do
 
     # ArtworkShare.destroy_all
-    Artwork.destroy_all
-    User.destroy_all
+    # Artwork.destroy_all
+    # User.destroy_all
 
     user1 = User.create!(username: 'Joe')
     user2 = User.create!(username: 'Collin')

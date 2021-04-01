@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class ArtworkShare < ApplicationRecord
-    validates :artwork_id, presence: true, uniqueness: true
+    validates :artwork_id, presence: true, uniqueness: { scope: :viewer_id, message: "Viewer can not view same artwork twice"}
     validates :viewer_id, presence: true
 
     belongs_to :viewer,
