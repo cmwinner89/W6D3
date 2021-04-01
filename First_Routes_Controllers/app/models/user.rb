@@ -23,4 +23,8 @@ class User < ApplicationRecord
     has_many :shared_artworks,
         through: :viewer_artworks,
         source: :artwork
+
+    # def self.whatever(:id)
+    #     do stuff
+    # end
 end
